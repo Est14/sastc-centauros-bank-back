@@ -1,7 +1,19 @@
 package com.centaurosbank.sastc.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.centaurosbank.sastc.application.ProcesarSolicitudTarjeta;
+import com.centaurosbank.sastc.domain.SolicitudTarjeta;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@RestController
 public class SolicitudTarjetaController {
+    private final ProcesarSolicitudTarjeta procesarSolicitudTarjeta;
+
+    public SolicitudTarjetaController(ProcesarSolicitudTarjeta procesarSolicitudTarjeta) {
+        this.procesarSolicitudTarjeta = procesarSolicitudTarjeta;
+    }
+
+    @PostMapping("/solicitud-tarjeta")
+    public void procesarSolicitud(@RequestBody SolicitudTarjeta solicitud) {
+        procesarSolicitudTarjeta.procesar(solicitud);
+    }
 }
