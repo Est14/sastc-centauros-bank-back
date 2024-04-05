@@ -1,21 +1,28 @@
 package com.centaurosbank.sastc.controller;
 
-import com.centaurosbank.sastc.application.ProcesadorSolicitud;
+import com.centaurosbank.sastc.application.ServicioSolicitud;
+import com.centaurosbank.sastc.application.dtos.SolicitudTarjetaDto;
 import com.centaurosbank.sastc.domain.SolicitudTarjeta;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+
+
+@RestController
 public class ControladorSolicitud {
 
-    private ProcesadorSolicitud procesadorSolicitud;
 
-    public ControladorSolicitud(ProcesadorSolicitud procesadorSolicitud) {
-        this.procesadorSolicitud = procesadorSolicitud;
+    private final ServicioSolicitud servicioSolicitud;
+
+    public ControladorSolicitud(ServicioSolicitud servicioSolicitud) {
+        this.servicioSolicitud = servicioSolicitud;
     }
 
-    public void manejarSolicitud(String datosSolicitud) {
-        // Parsear los datos de la solicitud
-        SolicitudTarjeta solicitud = parsearSolicitud(datosSolicitud);
-        // Procesar la solicitud usando el procesador
-        procesadorSolicitud.procesarSolicitud(solicitud);
+
+    @PostMapping("/solicitud-tarjeta")
+    public void manejarSolicitud(SolicitudTarjetaDto solicitudDto) {
+
+        servicioSolicitud.procesarSolicitud(solicitudDto);
     }
 
     private SolicitudTarjeta parsearSolicitud(String datosSolicitud) {

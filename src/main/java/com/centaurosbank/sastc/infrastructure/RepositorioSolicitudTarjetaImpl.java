@@ -1,14 +1,15 @@
 package com.centaurosbank.sastc.infrastructure;
 
-import com.centaurosbank.sastc.domain.RepositorioSolicitudTarjeta;
 import com.centaurosbank.sastc.domain.SolicitudTarjeta;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RepositorioSolicitudTarjetaMemoria implements RepositorioSolicitudTarjeta {
+@Repository
+public class RepositorioSolicitudTarjetaImpl implements RepositorioSolicitudTarjeta {
 
-    private Map<Integer, SolicitudTarjeta> memoria = new HashMap<>();
+    private Map<SolicitudTarjeta, SolicitudTarjeta> memoria = new HashMap<>();
 
 
     @Override
