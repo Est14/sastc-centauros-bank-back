@@ -1,18 +1,9 @@
 package com.centaurosbank.sastc.application.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-
-
-public class SolicitudTarjetaDto {
+public class ActualizarSolicitudTarjetaDto {
 
     private String nombre;
     private String apellido;
-    private String tipoDocumento;
-    private String documento;
     private String ciudad;
     private String direccion;
     private String telefono;
@@ -20,14 +11,10 @@ public class SolicitudTarjetaDto {
     private String ocupacion;
     private double ingresosMensuales;
 
-    public SolicitudTarjetaDto() {
-    }
 
-    public SolicitudTarjetaDto(String nombre, String apellido, String tipoDocumento, String documento, String ciudad, String direccion, String telefono, String nivelEducativo, String ocupacion, double ingresosMensuales) {
+    public ActualizarSolicitudTarjetaDto(String nombre, String apellido, String ciudad, String direccion, String telefono, String nivelEducativo, String ocupacion, double ingresosMensuales) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipoDocumento = tipoDocumento;
-        this.documento = documento;
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -50,22 +37,6 @@ public class SolicitudTarjetaDto {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
     }
 
     public String getCiudad() {
