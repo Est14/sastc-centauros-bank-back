@@ -48,8 +48,17 @@ public class ServicioSolicitud {
         );
     }
 
-    public SolicitudTarjeta consultarSolicitudPorId(int id) throws Exception {
-        return repositorioSolicitudTarjeta.consultarSolicitudPorId(id);
+    public SolicitudTarjeta consultarSolicitudPorId(int id) {
+        try {
+            SolicitudTarjeta solicitudTarjeta = repositorioSolicitudTarjeta.consultarSolicitudPorId(id);
+            if (solicitudTarjeta.isActiva()){
+                return solicitudTarjeta;
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<SolicitudTarjeta> obtenerSolicitudes() {
